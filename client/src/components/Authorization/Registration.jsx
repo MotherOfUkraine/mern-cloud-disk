@@ -1,14 +1,15 @@
 import React, { useState } from 'react'
-import './registration.scss'
+import './auth.scss'
 import Input from '../../utils/Input/Input'
 import { registration } from '../../redux/actions/user'
+
 const Registration = () => {
   const [email, setEmail] = useState('')
   const [password, setPassword] = useState('')
 
   return (
-    <div className="registration">
-      <div className="registration__header">Регистрация</div>
+    <div className="auth">
+      <div className="auth__header">Регистрация</div>
       <Input
         value={email}
         setValue={setEmail}
@@ -22,12 +23,12 @@ const Registration = () => {
         placeholder="Введите пароль"
       />
       <button
-        className="registration_btn"
+        className="auth_btn"
         onClick={() => {
           registration(email, password)
         }}
       >
-        Войти
+        Зарегистрироваться
       </button>
     </div>
   )

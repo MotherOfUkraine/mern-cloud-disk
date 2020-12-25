@@ -19,7 +19,7 @@ router.post(
   ],
   async (req, res) => {
     try {
-      const errors = validationResult(req, res)
+      const errors = validationResult(res)
       if (!errors.isEmpty()) {
         return res.status(400).json({ message: 'Incorrect data', errors })
       }

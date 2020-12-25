@@ -1,0 +1,27 @@
+@import '../../utils/colors';
+
+.navbar {
+  display: flex;
+  height: 50px;
+  justify-content: center;
+  background-color: white;
+  width: 100%;
+  font-size: 20px;
+  font-weight: 700;
+
+  &__header {
+    text-transform: uppercase;
+    margin-left: 16px;
+  }
+
+  &__login {
+    margin-left: auto;
+    margin-right: 27px;
+  }
+}
+
+.container {
+  width: 1140px;
+  display: flex;
+  align-items: center;
+}

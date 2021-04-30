@@ -1,11 +1,12 @@
 import React, {useEffect} from 'react';
 import Navbar from "./Navbar/Navbar";
 import './app.scss'
-import {BrowserRouter, Route, Switch} from "react-router-dom";
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import Registration from "./Authorization/Registration";
 import Login from "./Authorization/Login";
 import {useDispatch, useSelector} from "react-redux";
 import {auth} from '../redux/actions/user'
+import Disk from "./Disk/Disk";
 
 function App() {
     const isAuth = useSelector(state => state.user.isAuth)
@@ -21,11 +22,16 @@ function App() {
             <div className='app'>
                 <Navbar/>
                 <div className="wrap">
-                    {!isAuth &&
+                    {!isAuth ?
                     <Switch>
                         <Route path="/registration" component={Registration}/>
                         <Route path="/login" component={Login}/>
-                    </Switch>
+                        <Redirect to="/login" />
+                    </Switch>:
+                        <Switch>
+                            <Route exact path="/" component={Disk}/>
+                            <Redirect to="/"/>
+                        </Switch>
                     }
                 </div>
             </div>

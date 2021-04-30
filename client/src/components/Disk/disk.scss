@@ -1,0 +1,21 @@
+.disk{
+  margin-top: 20px;
+  &__btn{
+    display: flex;
+
+    &__back{
+      background: #566885;
+      padding: 2px 15px;
+      border-radius: 5px;
+      color: #fff;
+    }
+    &__create {
+      background: #566885;
+      padding: 2px 15px;
+      border-radius: 5px;
+      color: #fff;
+      margin-left: 10px;
+    }
+
+  }
+}

@@ -1,6 +1,6 @@
 import React, {useEffect} from 'react'
 import {useDispatch, useSelector} from "react-redux"
-import {getFiles} from "../../redux/actions/file"
+import {createDir, getFiles} from "../../redux/actions/file"
 import FileList from "./FileList/FileList"
 
 import './disk.scss'
@@ -13,6 +13,9 @@ const Disk = () => {
     const handleFiles = currentDir =>{
         dispatch(getFiles(currentDir))
     }
+    const handleAddItem = () => {
+        dispatch(createDir(currentDir, 'asdas1'))
+    }
     useEffect(() =>{
         handleFiles(currentDir)
     }, [currentDir])
@@ -20,7 +23,7 @@ const Disk = () => {
         <div className="disk">
             <div className="disk__btn">
                 <span className="disk__btn__back">Назад</span>
-                <span className="disk__btn__create">Создать</span>
+                <span className="disk__btn__create" onClick={() => handleAddItem()}>Создать</span>
             </div>
             <FileList/>
         </div>

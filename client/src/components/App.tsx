@@ -4,12 +4,13 @@ import './app.scss'
 import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
 import Registration from "./Authorization/Registration";
 import Login from "./Authorization/Login";
-import {useDispatch, useSelector} from "react-redux";
+import {useDispatch} from "react-redux";
 import {auth} from '../redux/actions/user'
 import Disk from "./Disk/Disk";
+import {useTypedSelector} from "../hooks/useTypedSelector";
 
 function App() {
-    const isAuth = useSelector(state => state.user.isAuth)
+    const isAuth = useTypedSelector(state => state.user.isAuth)
     const dispatch = useDispatch()
 
     useEffect(() => {

@@ -1,9 +1,13 @@
 const fs = require('fs')
-const path = require('path')
+const Path = require('path')
 class FileService {
 
+    getPath(file) {
+        return Path.join(__dirname, `../files/${file.user}/${file.path}`)
+    }
+
     createDir(file) {
-        const filePath = path.join(__dirname, `../files/${file.user}/${file.path}`)
+        const filePath = this.getPath(file)
         return new Promise(((resolve, reject) => {
             try {
                 if (!fs.existsSync(filePath)) {
@@ -19,6 +23,10 @@ class FileService {
         }))
     }
 
+    deleteFile(file) {
+    const path = this.getPath(file)
+        file.type === 'dir' ? fs.rmdirSync(path) : fs.unlinkSync(path)
+    }
 }
 
 module.exports = new FileService()

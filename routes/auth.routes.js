@@ -35,8 +35,6 @@ router.post('/registration',
         res.send({message: "Server error"})
       }
     })
-
-
 router.post('/login',
     async (req, res) => {
       try {

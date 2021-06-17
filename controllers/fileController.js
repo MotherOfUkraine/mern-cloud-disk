@@ -115,7 +115,7 @@ class FileController {
             return res.json({message: 'File was deleted'})
         } catch (e) {
             console.log(e)
-            return res.status(500).json({message: 'Dir in not empty'})
+            return res.status(500).json({message: 'Dir is not empty'})
         }
     }
 

@@ -4,8 +4,8 @@ const defaultState: userState = {
   currentUser: {
     id: '',
     email: '',
-    diskSpace: null,
-    useSpace: null
+    diskSpace: 0,
+    usedSpace: 0
   },
   isAuth: false
 }
@@ -25,8 +25,8 @@ const userReducer = (state = defaultState, action: userAction): userState =>{
         currentUser: {
           id: '',
           email: '',
-          diskSpace: null,
-          useSpace: null
+          diskSpace: 0,
+          usedSpace: 0
         },
         isAuth: false
       }

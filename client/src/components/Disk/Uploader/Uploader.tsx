@@ -1,8 +1,9 @@
 import React from 'react'
 import {useDispatch} from "react-redux"
-import {useTypedSelector} from "../../../hooks/useTypedSelector"
 
 import UploadFile from "./UploadFile"
+
+import {useTypedSelector} from "../../../hooks/useTypedSelector"
 import {hideUploader} from "../../../redux/reducers/uploadReducer"
 
 import './uploader.scss'

@@ -34,7 +34,7 @@ interface removeUploadFileAction {
 interface progressUploadFileAction {
     type: uploadTypes.PROGRESS_UPLOAD_FILE,
     payload: {
-        id: number,
+        id: string,
         progress: number
     }
 }

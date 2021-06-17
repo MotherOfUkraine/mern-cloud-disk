@@ -1,11 +1,11 @@
 const express = require("express")
 const mongoose = require("mongoose")
-const config = require("config")
+require('dotenv').config()
 const fileUpload = require("express-fileupload")
 const authRouter = require("./routes/auth.routes")
 const fileRouter = require("./routes/file.routes")
 const app = express()
-const PORT = process.env.PORT || config.get('PORT')
+const PORT = process.env.PORT
 const corsMiddleware = require('./middleware/cors.middleware')
 
 
@@ -18,7 +18,7 @@ app.use('/api/files', fileRouter)
 
 const start = async () => {
   try {
-    await mongoose.connect(config.get("dbUrl"), {
+    await mongoose.connect(process.env.dbUrl, {
       useNewUrlParser:true,
       useUnifiedTopology:true
     })

@@ -2,8 +2,8 @@ export interface userState {
     currentUser: {
         id: string,
         email: string,
-        diskSpace: number | null,
-        useSpace: number | null
+        diskSpace: number,
+        usedSpace: number
     },
     isAuth: boolean
 }
@@ -19,7 +19,7 @@ interface setUserAction {
         id: string,
         email: string,
         diskSpace: number,
-        useSpace: number
+        usedSpace: number
     }
 }
 

@@ -1,43 +1,46 @@
 import React from 'react'
 import {useDispatch} from "react-redux"
+import DeleteIcon from '@material-ui/icons/DeleteForever'
+import DownloadIcon from '@material-ui/icons/CloudDownload'
 
 import {pushToStack, setCurrentDir} from "../../../../redux/reducers/fileReducer"
 import {useTypedSelector} from "../../../../hooks/useTypedSelector"
 import {deleteFile, downloadFile} from "../../../../redux/actions/file"
-import {sizeFormat} from "../../../../utils/sizeFormat";
+import {sizeFormat} from "../../../../utils/sizeFormat"
 
 import dirLogo from '../../../../assets/img/folder.svg'
 import fileLogo from '../../../../assets/img/file.svg'
 
+
 import './file.scss'
 
 interface FileProps {
-    file: {
-        _id: any
-        type: string
-        name: string
-        date: string
-        size: number
-    }
+   file: {
+       _id: any
+       type: string
+       name: string
+       date: string
+       size: number
+   }
 }
 
 const File = ({file}: FileProps) => {
     const dispatch = useDispatch()
-    const currentDir = useTypedSelector(state => state.files.currentDir)
+    const {dirId, dirName} = useTypedSelector(state => state.files.currentDir)
     const fileView = useTypedSelector(state => state.app.fileView)
     const handleDir = () => {
-        dispatch(pushToStack(currentDir))
-        dispatch(setCurrentDir(file._id))
+        dispatch(pushToStack({dirId, dirName}))
+        dispatch(setCurrentDir(file._id, file.name))
     }
 
     const downloadHandler = (e: any) => {
         e.stopPropagation()
-        downloadFile(file)
+        downloadFile(file._id, file.name)
     }
 
     const deleteHandler = (e: any) => {
         e.stopPropagation()
-        dispatch(deleteFile(file))
+        dispatch(deleteFile(file._id))
     }
     return (
         <>
@@ -48,12 +51,14 @@ const File = ({file}: FileProps) => {
                          className="file__img"/>
                     <div className="file__name">{file.name}</div>
                     <div className="file__date">{file.date.slice(0, 10)}</div>
-                    <div className="file__size">{sizeFormat(file.size)}</div>
-                    {file.type !== 'dir' && <button className="file__btn file__download"
-                                                    onClick={(e) => downloadHandler(e)}>Download</button>}
-                    <button onClick={(e) => deleteHandler(e)}
-                            className="file__btn file__delete">Delete
-                    </button>
+
+                    {file.type !== 'dir' && <>
+                        <div className="file__size">{sizeFormat(file.size)}</div>
+                        <DownloadIcon className="file__btn file__download"
+                                      onClick={(e) => downloadHandler(e)}/>
+                        <DeleteIcon className="file__btn file__delete"
+                                    onClick={(e) => deleteHandler(e)}/>
+                    </>}
                 </div>
             }
             {
@@ -63,11 +68,8 @@ const File = ({file}: FileProps) => {
                          className="file-plate__img"/>
                     <div className="file-plate__name">{file.name}</div>
                     <div className="file-plate__btns">  {file.type !== 'dir' &&
-                    <button className="file-plate__btn file-plate__download"
-                            onClick={(e) => downloadHandler(e)}>Download</button>}
-                        <button onClick={(e) => deleteHandler(e)}
-                                className="file-plate__btn file-plate__delete">Delete
-                        </button>
+                    <DownloadIcon className="file-plate__btn file-plate__download" onClick={(e) => downloadHandler(e)}/>}
+                        <DeleteIcon className="file-plate__btn file-plate__delete" onClick={(e) => deleteHandler(e)}/>
                     </div>
 
                 </div>

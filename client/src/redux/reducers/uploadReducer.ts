@@ -19,7 +19,7 @@ const uploadReducer = (state = initialState, action: uploadAction): uploadState 
 export const showUploader = () => ({type: uploadTypes.SHOW_UPLOADER})
 export const hideUploader = () => ({type: uploadTypes.HIDE_UPLOADER})
 export const addUploadFile = (files: object) => ({type: uploadTypes.ADD_UPLOAD_FILE, payload: files})
-export const removeUploadFile = (id: number) => ({type: uploadTypes.REMOVE_UPLOAD_FILE, payload: id})
+export const removeUploadFile = (id: string) => ({type: uploadTypes.REMOVE_UPLOAD_FILE, payload: id})
 export const progressUploadFile = (file: object) => ({type: uploadTypes.PROGRESS_UPLOAD_FILE, payload: file})
 
 export default uploadReducer

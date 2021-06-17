@@ -1,10 +1,11 @@
 import React from 'react'
-import {useDispatch} from "react-redux";
-import {removeUploadFile} from "../../../redux/reducers/uploadReducer";
+import {useDispatch} from "react-redux"
+
+import {removeUploadFile} from "../../../redux/reducers/uploadReducer"
 
 interface UploadFileProps {
     file: {
-        id: number
+        id: string
         name: string
         progress: number
     }
@@ -13,7 +14,7 @@ interface UploadFileProps {
 const UploadFile = ({file}: UploadFileProps) => {
 
     const dispatch = useDispatch()
-    const hideUploadFileHandler = (id: number) => {
+    const hideUploadFileHandler = (id: string) => {
         dispatch(removeUploadFile(id))
     }
     return (

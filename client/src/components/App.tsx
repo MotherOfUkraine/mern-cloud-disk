@@ -1,16 +1,20 @@
-import React, {useEffect} from 'react';
-import Navbar from "./Navbar/Navbar";
-import './app.scss'
-import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom";
-import Registration from "./Authorization/Registration";
-import Login from "./Authorization/Login";
-import {useDispatch} from "react-redux";
+import React, {useEffect} from 'react'
+import {BrowserRouter, Route, Switch, Redirect} from "react-router-dom"
+import {useDispatch} from "react-redux"
+
+import Navbar from "./Navbar/Navbar"
+import Disk from "./Disk/Disk"
+import Registration from "./Authorization/Registration"
+import Login from "./Authorization/Login"
+
 import {auth} from '../redux/actions/user'
-import Disk from "./Disk/Disk";
-import {useTypedSelector} from "../hooks/useTypedSelector";
+import {useTypedSelector} from "../hooks/useTypedSelector"
+
+import './app.scss'
 
 function App() {
     const isAuth = useTypedSelector(state => state.user.isAuth)
+    const isLoader = useTypedSelector(state => state.app.isLoader)
     const dispatch = useDispatch()
 
     useEffect(() => {
@@ -22,6 +26,11 @@ function App() {
         <BrowserRouter>
             <div className='app'>
                 <Navbar/>
+                {
+                    isLoader && <div className="center">
+                        <div className="lds-dual-ring"/>
+                    </div>
+                }
                 <div className="wrap">
                     {!isAuth ?
                     <Switch>

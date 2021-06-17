@@ -4,21 +4,33 @@
   margin-top: 20px;
   &__btn{
     display: flex;
-
+    align-items: center;
     &__back{
-      background: #566885;
+      background: $font-color;
       padding: 2px 15px;
       border-radius: 5px;
       color: #fff;
+      cursor: pointer;
+      user-select: none;
     }
     &__create {
-      background: #566885;
+      background: $font-color;
       padding: 2px 15px;
       border-radius: 5px;
       color: #fff;
       margin-left: 10px;
-    }
+      cursor: pointer;
+      user-select: none;
 
+    }
+    &__create:hover{
+      cursor: pointer;
+    }
+  }
+  &__dirName{
+    font-size: 22px;
+    margin-top: 10px;
+    text-align: center;
   }
   &__upload-input {
     display: none;
@@ -34,21 +46,10 @@
   &__select{
     margin-left: auto;
   }
-  &__list, &__plate {
-    height: 20px;
-    width: 20px;
-    border: none;
-    outline: none;
-    cursor: pointer;
-    background: no-repeat center center;
-    background-size: contain;
-    margin: 0 10px;
-  }
-  &__list {
-    background-image: url("../../assets/img/list.svg");
-  }
-  &__plate {
-    background-image: url("../../assets/img/plate.svg");
+  &__view{
+    display: flex;
+    align-items: center;
+    font-size: 20px;
   }
 }
 .drop-area {

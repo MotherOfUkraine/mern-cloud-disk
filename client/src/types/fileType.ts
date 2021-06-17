@@ -1,7 +1,10 @@
 export interface fileState {
     files: Array<any>,
-    currentDir: any,
-    dirStack: Array<string>
+    currentDir: {
+        dirId: string | null
+        dirName: string
+    },
+    dirStack: Array<object>
 }
 
 export enum fileTypes {
@@ -30,12 +33,18 @@ interface setCurrentDirAction {
 
 interface pushToStackAction {
     type: fileTypes.PUSH_TO_STACK,
-    payload: string
+    payload: {
+        id: string,
+        name: string
+    }
 }
 
 interface popFromStackAction {
     type: fileTypes.POP_FROM_STACK,
-    payload: string
+    payload: {
+        id: string,
+        name: string
+    }
 }
 
 interface deleteFileAction {

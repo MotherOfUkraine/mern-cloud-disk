@@ -8,19 +8,22 @@
   width: 100%;
   font-size: 20px;
   font-weight: 700;
-
-  &__header {
+  border-bottom: 2px solid $font-color;
+  &__logo {
     text-transform: uppercase;
     margin-left: 16px;
   }
-
   &__login {
-    margin-left: auto;
+    margin-left: 25px;
     margin-right: 27px;
   }
   &__search{
     width: 200px;
     margin-left: 30px;
+  }
+  &__right{
+    margin-left: auto;
+    display: flex;
   }
 }
 

@@ -8,10 +8,7 @@
   align-items: center;
 
   &:hover {
-    transform: scale(1.02);
-  }
-  &__img {
-    justify-self: center;
+    transform: scale(1.01);
   }
 
   &__date {
@@ -23,7 +20,7 @@
     justify-self: center;
   }
   &__btn {
-    display: none;
+    display: none !important;
   }
 
   &:hover &__date {
@@ -34,11 +31,13 @@
   }
   &:hover &__download {
     grid-column-start: 5;
-    display: block;
+    display: block !important;
+    justify-self: center;
   }
   &:hover &__delete {
     grid-column-start: 6;
-    display: block;
+    display: block !important;
+    justify-self: center;
   }
 }
 

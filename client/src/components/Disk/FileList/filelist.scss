@@ -1,6 +1,6 @@
 .filelist {
   margin: 20px 0;
-
+  cursor: pointer;
   &__header {
     display: grid;
     grid-template-columns: 1fr 4fr repeat(4, 1fr);
@@ -16,6 +16,12 @@
   &__size {
     grid-column-start: 6;
     justify-self: center;
+  }
+  &:hover &__date {
+    grid-column-start: 3;
+  }
+  &:hover &__size {
+    grid-column-start: 4;
   }
 }
 
